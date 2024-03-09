@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Pegawai</title>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: gray;
+    }
+    tfoot{
+        background-color: gray;
+    }
+</style>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nama Pegawai</th>
+            <th>Jabatan</th>
+            <th>Status</th>
+            <th>Gaji Pokok</th>
+            <th>Tunjangan Jabatan</th>
+            <th>BPJS</th>
+            <th>Tunjangan Keluarga</th>
+            <th>Total Gaji</th>
+        </tr>
+    </thead>
+    <tbody id="pegawaiData">
+        <!-- Data Pegawai akan dimasukkan disini -->
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="7">Total Gaji</td>
+            <td id="totalGaji"></td>
+        </tr>
+    </tfoot>
+</table>
+
+<script>
+    // Data Pegawai
+    const dataPegawai = [
+        { nama: "Ridwan", jabatan: "Manager", status: "Menikah", gapok: 15000000 },
+        { nama: "Rudi", jabatan: "Asisten Manager", status: "Belum Menikah", gapok: 10000000 },
+        { nama: "David", jabatan: "Staff", status: "Menikah", gapok: 5000000 }
+    ];
+
+    const tbody = document.getElementById("pegawaiData");
+    const totalGajiCell = document.getElementById("totalGaji");
+    let totalGaji = 0;
+
+    dataPegawai.forEach(pegawai => {
+        // Hitung Tunjangan Jabatan
+        const tunjanganJabatan = 0.15 * pegawai.gapok;
+
+        // Hitung BPJS
+        const bpjs = 0.10 * pegawai.gapok;
+
+        // Hitung Tunjangan Keluarga
+        const tunjanganKeluarga = pegawai.status === "Menikah" ? 0.20 * pegawai.gapok : 0;
+
+        // Hitung Total Gaji
+        const total = pegawai.gapok + tunjanganJabatan - bpjs + tunjanganKeluarga;
+        totalGaji += total;
+
+        // Tambahkan data pegawai ke dalam tabel
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${pegawai.nama}</td>
+            <td>${pegawai.jabatan}</td>
+            <td>${pegawai.status}</td>
+            <td>${pegawai.gapok}</td>
+            <td>${tunjanganJabatan}</td>
+            <td>${bpjs}</td>
+            <td>${tunjanganKeluarga}</td>
+            <td>${total}</td>
+        `;
+        tbody.appendChild(row);
+    });
+
+    // Tampilkan total gaji
+    totalGajiCell.textContent = totalGaji;
+</script>
+
+</body>
+</html>
