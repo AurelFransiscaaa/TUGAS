@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Data Pegawai</title>
+</head>
+<body>
+    <h1>Data Pegawai</h1>
+    <form id="inputForm">
+        <label for="nama">Nama Pegawai :</label>
+        <input type="text" id="nama" name="nama"><br><br>
+        <label for="jabatan">Jabatan :</label>
+        <select id="jabatan" name="jabatan">
+            <option value="Manager">Manager</option>
+            <option value="Asisten Manager">Asisten Manager</option>
+            <option value="Staff">Staff</option>
+        </select><br><br>
+        <label for="status">Status :</label>
+        <select id="status" name="status">
+            <option value="menikah">Menikah</option>
+            <option value="belum">Belum Menikah</option>
+        </select><br><br>
+        <label for="gaji">Gaji Pokok :</label>
+        <input type="number" id="gaji" name="gaji"><br><br>
+        <input type="button" value="Submit" onclick="tambahPegawai()">
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nama Pegawai</th>
+                <th>Jabatan</th>
+                <th>Status</th>
+                <th>Gaji Pokok</th>
+                <th>Tunjangan Jabatan</th>
+                <th>BPJS</th>
+                <th>Tunjangan Keluarga</th>
+                <th>Total Gaji</th>
+            </tr>
+        </thead>
+        <tbody id="dataPegawai"></tbody>
+        <tfoot>
+            <tr>
+                <th colspan="7">Total Gaji</th>
+                <th id="totalGaji"></th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script src="js/pegawai.js"></script>
+</body>
+</html>
