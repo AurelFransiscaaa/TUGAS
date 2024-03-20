@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handler</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h2>Letakan kursor ke masing-masing kotak untuk melihat gambar</h2>
+    <div id="div1">
+        Hewan Bebek
+    </div>
+    <div id="div2">
+        Hewan Ayam
+    </div>
+    <div id="div3">
+        Hewan Kuda
+    </div>
+
+    <audio src="audio/bebek.mp3" id="bebek"></audio>
+    <audio src="audio/ayam.mp3" id="ayam"></audio>
+    <audio src="audio/kuda.mp3" id="kuda"></audio>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+
+        $("document").ready(function(){
+            $("#div1").mouseover(function(){
+                $(this).css({
+                    background: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/White_domesticated_duck%2C_stretching.jpg/1200px-White_domesticated_duck%2C_stretching.jpg')"
+                });
+                $("#bebek")[0].play();
+            });
+            $("div").mouseout(function(){
+                $(this).css({
+                    background: "green"
+                });
+            });
+            $("#div2").mouseover(function(){
+                $(this).css({
+                    background: "url('https://asset.kompas.com/crops/TfUM4Aft1Jxz-uSdBF-W7Gwtj0k=/0x0:4246x2831/750x500/data/photo/2021/12/11/61b4a4c236bdc.jpg')"
+                });
+                $("#ayam")[0].play();
+            });
+            $("#div3").mouseover(function(){
+                $(this).css({
+                    background: "url('https://cdn1-production-images-kly.akamaized.net/TFoGnNYYitLe_pHxJFwZv5_1ogQ=/1280x720/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/3393817/original/037871600_1614928316-kuda2021.jpg')"
+                });
+                $("#kuda")[0].play();
+            });
+        });
+    </script>
+</body>
+</html>
